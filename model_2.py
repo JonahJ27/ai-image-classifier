@@ -77,23 +77,6 @@ class FakeNet2(nn.Module):
     super().__init__()
     
     self.fake_net = nn.Sequential(
-        # nn.Conv2d(in_channels=3, out_channels=96, kernel_size=5, stride=2, padding=1), # To 15 by 15 from 32 by 32
-        # nn.ReLU(True), 
-        # nn.Conv2d(in_channels=96, out_channels=256, kernel_size=3, stride=2,), # To 15 by 15 from 7 by 7
-        # nn.ReLU(True),
-        # nn.Conv2d(in_channels=256, out_channels=256, kernel_size=3, padding=1), # To 7 by 7 from 7 by 7
-        # nn.ReLU(True),
-        # nn.Conv2d(in_channels=256, out_channels=96, kernel_size=3, padding=1), # To 7 by 7 from 7 by 7
-        # nn.MaxPool2d(kernel_size=3, stride=2), 
-        # nn.ReLU(True),
-        # nn.Flatten(),
-        # nn.Linear(96 * 9, 96 * 4),
-        # nn.ReLU(True),
-        # nn.Linear(96 * 4, 96 * 4),
-        # nn.ReLU(True),
-        # nn.Linear(96 * 4, 2),
-        # nn.ReLU(True),
-        # nn.Softmax(dim=1)
         nn.Conv2d(in_channels=3, out_channels=64, kernel_size=3), 
         nn.ReLU(True), 
         nn.BatchNorm2d(64),
