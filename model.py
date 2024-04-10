@@ -29,13 +29,14 @@ class FakeNet(nn.Module):
         nn.MaxPool2d(kernel_size=3, stride=2), 
         nn.ReLU(True),
         nn.Flatten(),
-        nn.Linear(96 * 9, 96 * 4),
+        nn.Linear(96 * 9, 256),
         nn.ReLU(True),
-        nn.Linear(96 * 4, 96 * 4),
+        nn.BatchNorm1d(num_features=256),
+        nn.Dropout(0.5),
+        nn.Linear(128, 128),
         nn.ReLU(True),
-        nn.Linear(96 * 4, 2),
-        nn.ReLU(True),
-        nn.Softmax(dim=1)
+        nn.Linear(128, 1),
+        nn.Sigmoid(),
     )
     
   def forward(self, x): 
