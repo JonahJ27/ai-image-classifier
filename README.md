@@ -36,5 +36,16 @@ We've tried some other models that generally fall in between the accuracy of the
 
 ### Datasets
 
-We have training sets of small, medium and full size for real and fake data. Small is 1000 images per class, medium is 5000 and the full one is 50000 images. We also have a dataset of images generated with Disco Diffusion to prove that you can use a different model to generate the images and then you can use it for a different dataset and still be accurate. We also have some images that are blurred or otherwise modified in specific spots to emulate image modification that you might see on social media.
+We have training sets of small, medium and full size for real and fake data. Small is 1000 images per class, medium is 5000 and the full one is 50000 images. We also have a dataset of images generated with Disco Diffusion to prove that you can use a different model to generate the images and then you can use it for a different dataset and still be accurate. We also have some images that are blurred or otherwise modified in specific spots to emulate image modification that you might see on social media. These are used to create datasets for classifying between real vs. edited images and AI-generated vs edited images.
+
+You can change the dataloader path for test_path to any of the following:
+- train
+- train-medium
+- train-small
+- train-fake-edited
+- train-real-edited
+
+The first 3 correspond to ```test``` as the test path while, the last two correspond to:
+- test-fake-edited
+- test-real-edited
 
