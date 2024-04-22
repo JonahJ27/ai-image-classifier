@@ -19,24 +19,25 @@ class FakeNet(nn.Module):
     super().__init__()
     
     self.fake_net = nn.Sequential(
-        nn.Conv2d(in_channels=3, out_channels=96, kernel_size=5, stride=2, padding=1), # To 15 by 15 from 32 by 32
+        nn.Conv2d(in_channels=3, out_channels=64, kernel_size=3),
         nn.ReLU(True), 
-        nn.Conv2d(in_channels=96, out_channels=256, kernel_size=3, stride=2,), # To 15 by 15 from 7 by 7
+        nn.Conv2d(in_channels=64, out_channels=128, kernel_size=5), 
+        nn.ReLU(True), 
+        nn.Conv2d(in_channels=128, out_channels=256, kernel_size=3, stride=2, padding=1), 
+        nn.ReLU(True), 
+        nn.Conv2d(in_channels=256, out_channels=256, kernel_size=5), 
         nn.ReLU(True),
-        nn.Conv2d(in_channels=256, out_channels=256, kernel_size=3, padding=1), # To 7 by 7 from 7 by 7
-        nn.ReLU(True),
-        nn.Conv2d(in_channels=256, out_channels=96, kernel_size=3, padding=1), # To 7 by 7 from 7 by 7
-        nn.MaxPool2d(kernel_size=3, stride=2), 
+        nn.Conv2d(in_channels=256, out_channels=256, kernel_size=3, stride=2, padding=1), 
         nn.ReLU(True),
         nn.Flatten(),
-        nn.Linear(96 * 9, 256),
+        nn.Linear(6400, 256),
         nn.ReLU(True),
         nn.BatchNorm1d(num_features=256),
         nn.Dropout(0.5),
-        nn.Linear(128, 128),
+        nn.Linear(256, 128),
         nn.ReLU(True),
         nn.Linear(128, 1),
-        nn.Sigmoid(),
+        nn.Sigmoid()
     )
     
   def forward(self, x): 
